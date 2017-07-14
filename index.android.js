@@ -1,53 +1,42 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
-import React, { Component } from 'react';
+import React from 'react';
 import {
+  View,
   AppRegistry,
-  StyleSheet,
   Text,
-  View
+  Button,
 } from 'react-native';
+import { StackNavigator } from 'react-navigation';
+import ChatScreen from './js/ChatScreen';
+import TabNavigatorScreen from './js/TabNavigatorScreen';
+import City from './js/City';
+import FlatListCity from './js/FlatListCity';
 
-export default class reactNavigation extends Component {
+class HomeScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Welcome',
+  };
   render() {
-    return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
-      </View>
-    );
+	  const { navigate } = this.props.navigation;
+    return <View>
+			<Text>Hello, Navigation!</Text>
+			<Button
+			  onPress={() => navigate('Chat', { user: 'Lucy123' })}
+			  title="Chat with Lucy"
+			/>
+		</View>
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+const SimpleApp = StackNavigator({
+  //Home: { screen: HomeScreen },
+  Home: { screen: TabNavigatorScreen },
+  Chat: { screen: ChatScreen , 
+	  navigationOptions: ({navigation}) => ({
+	  header: null,
+    }),
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  City : { screen: City }, 
+  FlatListCity: { screen: FlatListCity},
 });
 
-AppRegistry.registerComponent('reactNavigation', () => reactNavigation);
+AppRegistry.registerComponent('reactNavigation', () => SimpleApp);
