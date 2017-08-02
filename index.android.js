@@ -5,7 +5,7 @@ import {
   Text,
   Button,
 } from 'react-native';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, DrawerNavigator } from 'react-navigation';
 import ChatScreen from './js/ChatScreen';
 import TabNavigatorScreen from './js/TabNavigatorScreen';
 import City from './js/City';
@@ -27,8 +27,9 @@ class HomeScreen extends React.Component {
   }
 }
 
+
+
 const SimpleApp = StackNavigator({
-  //Home: { screen: HomeScreen },
   Home: { screen: TabNavigatorScreen },
   Chat: { screen: ChatScreen , 
 	  navigationOptions: ({navigation}) => ({
@@ -39,4 +40,18 @@ const SimpleApp = StackNavigator({
   FlatListCity: { screen: FlatListCity},
 });
 
-AppRegistry.registerComponent('reactNavigation', () => SimpleApp);
+const MyApp = DrawerNavigator({
+  Home: {
+    screen: SimpleApp,
+  },
+  Notifications: {
+    screen: HomeScreen,
+  },
+}, {
+	drawerWidth: 300,
+	drawerPosition: 'right',
+	//contentComponent: props => <View><Text>aaaaabbbccccss</Text></View>,
+	backBehavior: 'none',
+});
+
+AppRegistry.registerComponent('reactNavigation', () => MyApp);

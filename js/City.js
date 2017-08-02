@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Navigator, Text, TouchableOpacity, Image, ListView, View, RefreshControl, Dimensions} from 'react-native';
+import {Navigator, Text, TouchableOpacity, Image, ListView, View, RefreshControl} from 'react-native';
 
 const cities = require('../allcities.json');
 
