@@ -45,11 +45,13 @@ class WarpperTabNavigatorScreen extends React.Component {
     return (
 		<View style={{flex: 1}}>
 			<TabNavigatorScreen navigation={this.props.navigation}/>
-			<View style={{position: 'absolute', bottom: 0, zIndex: 99, justifyContent: 'center', flexDirection: 'row', alignItems: 'center', width: Dimensions.get('window').width}}>
-				<TouchableNativeFeedback onPress={()=>{this.setState({show: !this.state.show})}}><Image source={{uri: 'add_card', width: 60, height: 60}}/></TouchableNativeFeedback>
+			<View style={{position: 'absolute', bottom: 0, justifyContent: 'center', flexDirection: 'row', alignItems: 'center', width: Dimensions.get('window').width}}>
+				<TouchableNativeFeedback onPress={()=>{this.setState({show: !this.state.show})}}><Image source={{uri: 'add_card', width: 60, height: 60}} style={{zIndex: 99}}/></TouchableNativeFeedback>
 			</View>
 	  {this.state.show ?   
-			<View style={{flex: 1, backgroundColor: 'red', position: 'absolute', zIndex: 98, width: Dimensions.get('window').width, height: Dimensions.get('window').height}}></View>
+			<View style={{flex: 1, backgroundColor: '#ccc', opacity: 0.4, bottom: 0, top: 0, position: 'absolute', zIndex: 98, width: Dimensions.get('window').width}}>
+				<Text>faaaaaa</Text>
+			</View>
 		: null}
 		</View>
 	)
