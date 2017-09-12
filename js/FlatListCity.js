@@ -44,14 +44,25 @@ export default class FlatListCity extends Component {
 		)
 	}
 
+	_onScroll = (event) => {
+		//alert(event.nativeEvent.contentOffset.y);
+	}
+
 	render() {
 		return (
-			<FlatList
-				data={this.state.dataSource}
-				renderItem={this._renderItem}
-				keyExtractor={this._keyExtractor}
-				refreshControl = {this._renderRefreshControl()}>	
-			</FlatList>
+			<View style={{flex: 1}}>
+				<FlatList
+					onScroll={this._onScroll}
+					data={this.state.dataSource}
+					renderItem={this._renderItem}
+					keyExtractor={this._keyExtractor}
+					refreshControl = {this._renderRefreshControl()}>	
+				</FlatList>
+
+				<View style={{bottom: 0, height: 40, justifyContent: 'center', flexDirection: 'row', alignItems: 'center'}}>
+					<Text>faafa</Text>
+				</View>
+			</View>
 		)
 	}
 }

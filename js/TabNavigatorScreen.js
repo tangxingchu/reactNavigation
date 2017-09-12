@@ -8,6 +8,9 @@ import { TabNavigator } from "react-navigation";
 import BaiduMap from './BaiduMap';
 
 class RecentChatsScreen extends React.Component {
+
+	
+
   render() {
 	const { navigate } = this.props.navigation;
     return <View>
@@ -16,6 +19,18 @@ class RecentChatsScreen extends React.Component {
 			  onPress={() => navigate('Chat', { user: 'Lucy123' })}
 			  title="Chat with Lucy"
 			/>
+			<View style={{marginTop: 16}}>
+			<Button
+			  onPress={() => navigate('GesturePassword', { user: 'Lucy123' })}
+			  title="手势密码"
+			/>
+			</View>
+			<View style={{marginTop: 16}}>
+			<Button
+			  onPress={() => navigate('DocViewer', { user: 'Lucy123' })}
+			  title="DocViewer"
+			/>
+			</View>
 		</View>
   }
 }
@@ -49,10 +64,11 @@ class ThirdScreen extends React.Component {
 
 
 const MainScreenNavigator = TabNavigator({
-  Recent: { screen: RecentChatsScreen },
-  All: { screen: AllContactsScreen },
-  '坚强猪' : { screen: ThirdScreen },
-  '百度地图' : { screen: BaiduMap },
+  '最近': { screen: RecentChatsScreen },
+  '所有': { screen: AllContactsScreen },
+  '中心': { screen: ()=><View/> },
+  '坚猪' : { screen: ThirdScreen },
+  '地图' : { screen: BaiduMap },
 },
 {tabBarOptions: {
 	activeTintColor: '#e91e63',
@@ -68,6 +84,5 @@ const MainScreenNavigator = TabNavigator({
 MainScreenNavigator.navigationOptions = {
   title: 'ReactNavigation测试',
 };
-
 
 export default MainScreenNavigator;
