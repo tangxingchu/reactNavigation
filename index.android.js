@@ -6,6 +6,7 @@ import {
   Button,
   Dimensions,
   Image,
+  TouchableNativeFeedback,
 } from 'react-native';
 import { StackNavigator, DrawerNavigator } from 'react-navigation';
 import ChatScreen from './js/ChatScreen';
@@ -32,13 +33,24 @@ class HomeScreen extends React.Component {
 }
 
 class WarpperTabNavigatorScreen extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.state = {
+			show: false,
+		};
+	}
+
   render() {
     return (
 		<View style={{flex: 1}}>
 			<TabNavigatorScreen navigation={this.props.navigation}/>
-			<View style={{position: 'absolute', bottom: 0, justifyContent: 'center', flexDirection: 'row', alignItems: 'center', width: Dimensions.get('window').width}}>
-				<Image source={{uri: 'add_card', width: 60, height: 60}}/>
+			<View style={{position: 'absolute', bottom: 0, zIndex: 99, justifyContent: 'center', flexDirection: 'row', alignItems: 'center', width: Dimensions.get('window').width}}>
+				<TouchableNativeFeedback onPress={()=>{this.setState({show: !this.state.show})}}><Image source={{uri: 'add_card', width: 60, height: 60}}/></TouchableNativeFeedback>
 			</View>
+	  {this.state.show ?   
+			<View style={{flex: 1, backgroundColor: 'red', position: 'absolute', zIndex: 98, width: Dimensions.get('window').width, height: Dimensions.get('window').height}}></View>
+		: null}
 		</View>
 	)
   }
