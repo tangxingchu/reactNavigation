@@ -15,6 +15,7 @@ import City from './js/City';
 import FlatListCity from './js/FlatListCity';
 import GesturePassword from './js/GesturePassword'
 import DocViewer from './js/DocViewer'
+import Fingerprint from './js/Fingerprint'
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -75,6 +76,7 @@ const SimpleApp = StackNavigator({
     }),
   },
   DocViewer: { screen: DocViewer},
+  Fingerprint: { screen: Fingerprint},
 });
 
 const MyApp = DrawerNavigator({

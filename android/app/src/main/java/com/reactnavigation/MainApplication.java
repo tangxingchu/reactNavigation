@@ -3,6 +3,7 @@ package com.reactnavigation;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.jari.fingerprint.FingerprintPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.rnfs.RNFSPackage;
 import com.reactlibrary.RNReactNativeDocViewerPackage;
@@ -27,6 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new FingerprintPackage(),
             new RCTCameraPackage(),
             new RNFSPackage(),
             new RNReactNativeDocViewerPackage(),

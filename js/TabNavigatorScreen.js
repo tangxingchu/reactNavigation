@@ -13,25 +13,32 @@ class RecentChatsScreen extends React.Component {
 
   render() {
 	const { navigate } = this.props.navigation;
-    return <View>
+    return (
+		<View>
 			<Text>Hello, Navigation!</Text>
 			<Button
 			  onPress={() => navigate('Chat', { user: 'Lucy123' })}
 			  title="Chat with Lucy"
 			/>
 			<View style={{marginTop: 16}}>
-			<Button
-			  onPress={() => navigate('GesturePassword', { user: 'Lucy123' })}
-			  title="手势密码"
-			/>
+				<Button
+				  onPress={() => navigate('GesturePassword', { user: 'Lucy123' })}
+				  title="手势密码"
+				/>
 			</View>
 			<View style={{marginTop: 16}}>
-			<Button
-			  onPress={() => navigate('DocViewer', { user: 'Lucy123' })}
-			  title="DocViewer"
-			/>
+				<Button
+				  onPress={() => navigate('DocViewer', { user: 'Lucy123' })}
+				  title="DocViewer"
+				/>
 			</View>
-		</View>
+			<View style={{marginTop: 16}}>
+				<Button
+				  onPress={() => navigate('Fingerprint', { user: 'Lucy123' })}
+				  title="指纹"
+				/>
+			</View>
+		</View>)
   }
 }
 
