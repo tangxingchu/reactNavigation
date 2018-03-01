@@ -38,6 +38,18 @@ class RecentChatsScreen extends React.Component {
 				  title="指纹"
 				/>
 			</View>
+			<View style={{marginTop: 16}}>
+				<Button
+				  onPress={() => navigate('ExternalURL', { user: 'Lucy123' })}
+				  title="外部链接"
+				/>
+			</View>
+			<View style={{marginTop: 16}}>
+				<Button
+				  onPress={() => navigate('BottomSheetBehaviorScreen', { user: 'Lucy123' })}
+				  title="BottomSheetBehaviorScreen"
+				/>
+			</View>
 		</View>)
   }
 }

@@ -3,6 +3,7 @@ package com.reactnavigation;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.bottomsheetbehavior.BottomSheetBehaviorPackage;
 import io.jari.fingerprint.FingerprintPackage;
 import com.lwansbrough.RCTCamera.RCTCameraPackage;
 import com.rnfs.RNFSPackage;
@@ -28,6 +29,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new BottomSheetBehaviorPackage(),
             new FingerprintPackage(),
             new RCTCameraPackage(),
             new RNFSPackage(),

@@ -4,7 +4,6 @@ import {
   Text,
   Button,
   Modal,
-  Image,
   StyleSheet,StatusBar, AppState, Vibration,
 } from 'react-native';
 import Fingerprint from 'react-native-fingerprint-android';
@@ -105,68 +104,25 @@ export default class FingerprintScreen extends React.Component {
     }
 
     render() {
-		var modalBackgroundStyle = {
-		  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-		};
-		var innerContainerTransparentStyle = {backgroundColor: '#fff', padding: 20};
-		var activeButtonStyle = {backgroundColor: '#ddd'};
         return (
-            (
-            <View 
-                style={{
-                    flex: 1,
-                    alignItems: 'stretch',
-                    justifyContent: 'center',
-                    flexDirection: 'row'
-                }}
-            >
-                <View
-                    style={{
-                        backgroundColor: '#292a38',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        bottom: 0,
-                        right: 0,
-                        justifyContent: 'center',
-                        flexDirection: 'row'
-                    }}
-                >
-                    <View
-                    >
-                        <Text
-                            style={{textAlign: 'center', fontSize: 16, color: 'rgba(255, 255, 255, 1)', marginTop: 100}}
-                        >
-                            欢迎回来
-                        </Text>
-                        <View
-                            style={{
-                                justifyContent: 'center',
-                                flexDirection: 'row'
-                            }}
-                        >
-                            <Image 
-                                style={{
-                                    width: 60,
-                                    height: 60,
-                                    marginTop: 20
-                                }}
-                                source={{uri: 'touch'}}
-                            >
-                            </Image>
-                        </View>
+            <View style={{flex:1}}>
+                <View duration={1000} transition="backgroundColor"
+                      style={[styles.container, {backgroundColor: this.getPhaseColor()}]}>
+                    <View style={styles.icon}>
+                        
                     </View>
+
+                    <Text style={styles.welcome}>
+                        {this.state.phase === 'normal' && 'Touch the fingerprint sensor.'}
+                        {this.state.phase === 'warn' && 'Try again.'}
+                        {this.state.phase === 'fail' && 'Authentication failed.'}
+                        {this.state.phase === 'success' && 'Authentication succeeded.'}
+                    </Text>
+                    <Text>
+                        {this.state.message}
+                    </Text>
                 </View>
-				<Modal visible={true} transparent={true} onRequestClose={() => {}} >
-					<View style={[styles.container, modalBackgroundStyle]}>
-						<View style={[styles.innerContainer, innerContainerTransparentStyle]}>
-						    <Text>触摸指纹校验.</Text>
-							<View></View>
-						</View>
-					</View>
-				</Modal>
             </View>
-        )
             
         );
     }
@@ -175,15 +131,22 @@ export default class FingerprintScreen extends React.Component {
 
 const styles = StyleSheet.create({
     container: {
-		flex: 1,
-		justifyContent: 'center',
-		padding: 20,
-	},
-	innerContainer: {
-		borderRadius: 10,
-		alignItems: 'center',
-	},
-	modalButton: {
-		marginTop: 10,
-	},
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    welcome: {
+        fontFamily: 'Roboto',
+        color: 'black',
+        fontSize: 26,
+        textAlign: 'center',
+        margin: 10,
+        marginTop: 20,
+    },
+    icon: {
+        borderRadius: 100,
+        padding: 20,
+        backgroundColor: "#fff",
+        elevation: 5,
+    }
 });

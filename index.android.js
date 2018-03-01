@@ -16,6 +16,8 @@ import FlatListCity from './js/FlatListCity';
 import GesturePassword from './js/GesturePassword'
 import DocViewer from './js/DocViewer'
 import Fingerprint from './js/Fingerprint'
+import ExternalURL from './js/ExternalURL'
+import BottomSheetBehaviorScreen from './js/BottomSheetBehaviorScreen'
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -68,7 +70,15 @@ const SimpleApp = StackNavigator({
 	  header: null,
     }),
   },
-  City : { screen: City }, 
+  City : { screen: City, navigationOptions: ({navigation}) => ({
+	  title: '城市列表',
+	  //header: <Text>城市列表</Text>,
+	  headerTitleStyle: {
+		color: '#000',
+		alignSelf: 'center',
+	  }
+    }),
+  }, 
   FlatListCity: { screen: FlatListCity},
   GesturePassword: { screen: GesturePassword, 
 	  navigationOptions: ({navigation}) => ({
@@ -77,6 +87,8 @@ const SimpleApp = StackNavigator({
   },
   DocViewer: { screen: DocViewer},
   Fingerprint: { screen: Fingerprint},
+  ExternalURL: { screen: ExternalURL},
+  BottomSheetBehaviorScreen: { screen: BottomSheetBehaviorScreen},
 });
 
 const MyApp = DrawerNavigator({
